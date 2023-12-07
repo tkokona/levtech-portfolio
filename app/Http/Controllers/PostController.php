@@ -7,10 +7,11 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index()
     {
+        $posts=Post::where('user_id',\Auth::user()->id)->get();
         //Viewを返却するときは、return文の指定をview('Bladeファイル名の「.blade.php」より前の部分')と記載する。
-        return view('posts/index')->with(['posts'=>$post->get()]);
+        return view('posts/index',['posts'=>$posts,]);
         
     }
     
