@@ -39,7 +39,7 @@
                     <h2>到着地</h2>
                     <input type="text" name="post[arrive_point]" placeholder="例）東京スカイツリー"/>
                 </div>
-                <input type="submit" value="store"/>
+                <input type="submit" value="投稿"/>
             </form>
          </body>
     </x-app-layout>

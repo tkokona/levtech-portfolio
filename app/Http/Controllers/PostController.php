@@ -10,9 +10,30 @@ class PostController extends Controller
     public function index(Post $post)
     {
         //Viewを返却するときは、return文の指定をview('Bladeファイル名の「.blade.php」より前の部分')と記載する。
-        return view('posts/index')->with(['posts' => $post->getByLimit()]);
-        //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
+        return view('posts/index')->with(['posts'=>$post->get()]);
+        
     }
+    
+    public function rider()
+    {
+        $posts=Post::all();
+        return view('/posts/rider')->with('posts', $posts);
+    }
+    
+   public function search(Request $request)
+   {
+       $keyward=$request->departure_point;
+        if(!empty($keyward)){
+            $query=Post::query();
+            $posts=$query->where('departure_point','LIKE', "%{$keyward}%")->get();
+            // $message = "'$keyword'を含む投稿の検索が完了しました。";
+            return view('/posts/search')->with(['posts'=>$posts]);
+        }
+        else {
+            $message = "検索結果はありません。";
+            return view('/posts/search')->with('message',$message);
+        }
+   }
     
     public function create()
     {
