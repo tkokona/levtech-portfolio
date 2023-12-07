@@ -13,21 +13,41 @@
          <body>
             <div class='posts'>
                 @foreach ($posts as $post)
-                    <div class='post'>
-                        <h2 class='title'>{{ $post->title }}</h2>
-                        <div class='category'>
-                            <p class='date_and_time'>{{ $post->departure_date_and_time }}</p>
-                            <p class='passengers'>{{ $post->number_of_passengers }}人</p>
-                            <p class='rideable'>{{ $post->rideable_number_of_people }}人</p>
-                            <p class='departure'>{{ $post->departure_point }}</p>
-                            <p class='arrive'>{{ $post->arrive_point }}</p>
-                        </div>
-                        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
-                        </form>
-                    </div>
+                    <table class='post'>
+                        <tr>
+                             <th class='title'>{{ $post->title }}</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>出発日時</td>
+                            <td>出発地</td>
+                        </tr>
+                        <tr>
+                            <td class='date_and_time'>{{ $post->departure_date_and_time }}</td>
+                            <td class='departure'>{{ $post->departure_point }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>乗車人数</td>
+                            <td>到着地</td>
+                        </tr>
+                        <tr>
+                            <td class='passengers'>{{ $post->number_of_passengers }}人</td>
+                            <td class='arrive'>{{ $post->arrive_point }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>乗車可能人数</td>
+                        </tr>
+                        <tr>
+                            <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
+                        </tr>
+                    </table>
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $post->id }})">削除</button>
+                    </form>
                 @endforeach
             </div>
             

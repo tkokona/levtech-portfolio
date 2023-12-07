@@ -27,6 +27,8 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/create', [PostController::class, 'create'])->name('create');
 Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'delete']);
+Route::get('/posts/rider',[PostController::class, 'rider'])->name('rider');
+Route::get('/posts/search',[PostController::class, 'search']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
