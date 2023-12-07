@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{ __('乗せる人') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('rider')" :active="request()->routeIs('rider')">
+                        {{ __('乗る人') }}
+                    </x-nav-link>
                 </div>
             </div>
 
