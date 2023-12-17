@@ -22,10 +22,10 @@ return new class extends Migration
             $table->integer('rideable_number_of_people');
             $table->string('departure_point',30);
             $table->string('arrive_point',30);
-            $table->double('departure_latitude',9,6);
-            $table->double('departure_longitude',9,6);
-            $table->double('arrive_latitude',9,6);
-            $table->double('arrive_longitude',9,6);
+            $table->double('departure_latitude',9,6)->nullable(true);
+            $table->double('departure_longitude',9,6)->nullable(true);
+            $table->double('arrive_latitude',9,6)->nullable(true);
+            $table->double('arrive_longitude',9,6)->nullable(true);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -39,5 +39,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
+        
     }
 };
