@@ -16,6 +16,10 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
     
+     public function wishes(){
+        return $this->hasMany(Wish::class);
+    }
+    
     protected $fillable = [
         'title',
         'departure_date_and_time',
@@ -23,6 +27,7 @@ class Post extends Model
         'rideable_number_of_people',
         'departure_point',
         'arrive_point',
+        'user_id',
     ];
     use HasFactory;
     public function getByLimit(int $limit_count = 10)
@@ -30,4 +35,5 @@ class Post extends Model
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->orderBy('updated_at', 'DESC')->limit($limit_count)->get();
     }
+  
 }

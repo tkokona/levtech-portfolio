@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,13 @@ Route::post('/posts', [PostController::class, 'store']);
 Route::delete('/posts/{post}', [PostController::class, 'delete']);
 Route::get('/posts/rider',[PostController::class, 'rider'])->name('rider');
 Route::get('/posts/search',[PostController::class, 'search']);
+
+
+
+Route::get('/posts/{post}/wishes/request', [WishController::class, 'request']);
+Route::get('/wishes/show/{post}/{wish}', [WishController::class, 'show']);
+Route::post('/wishes/{post}', [WishController::class, 'store']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

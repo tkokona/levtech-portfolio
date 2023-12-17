@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Wish;
 
 class PostController extends Controller
 {
@@ -18,7 +19,7 @@ class PostController extends Controller
     public function rider()
     {
         $posts=Post::all();
-        return view('/posts/rider')->with('posts', $posts);
+        return view('/posts/rider')->with(['posts' => $posts]);
     }
     
    public function search(Request $request)
