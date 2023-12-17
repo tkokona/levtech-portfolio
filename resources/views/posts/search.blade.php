@@ -55,6 +55,7 @@
                                 <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
                             </tr>
                         </table>
+                        <div class='request'><a href="/wishes/request/{{ $post->id }}">申請</a></div>
                     @endforeach
                 @endempty
             </div>
