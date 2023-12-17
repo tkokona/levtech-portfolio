@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;  //Userクラス定義の前に追加
 
 class User extends Authenticatable
 {
@@ -15,6 +16,11 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(Post::class);
     }
+    
+    public function wishes(){
+        return $this->hasMany(Wish::class);
+    }
+    
 
     /**
      * The attributes that are mass assignable.

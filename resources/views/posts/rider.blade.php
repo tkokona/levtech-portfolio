@@ -19,7 +19,7 @@
                 </form>
             </div>
             
-            <h1>投稿一覧</h1>
+            
             <div class='posts'>
                 @empty($posts)
                     <p>{{ $message }}</p>
@@ -55,6 +55,7 @@
                                 <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
                             </tr>
                         </table>
+                        <div class='request'><a href="/posts/{{ $post->id }}/wishes/request">申請</a></div>
                     @endforeach
                 @endempty
             </div>
