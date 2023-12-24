@@ -10,60 +10,56 @@
         <x-slot name="header">
             相乗りマッチング
         </x-slot>
-         <body>
-             <div class='wishes'>
-                <table class='wish'>
-                    <tr>
-                        <td>出発希望日時</td>
-                        <td>出発希望地</td>
-                    </tr>
-                    <tr>
-                        <td class='desired_date_and_time'>{{ $wish->desired_departure_date_and_time }}</td>
-                        <td class='desires_departure'>{{ $wish->desired_departure_point }}</td>
-                    </tr>
+        <body>
+            <table class='wish'>
+                <tr>
+                    <td>出発希望日時</td>
+                    <td>出発希望地</td>
+                </tr>
+                <tr>
+                    <td class='desired_date_and_time'>{{ $wish->desired_departure_date_and_time->format('Y-m-d H:i') }}</td>
+                    <td class='desires_departure'>{{ $wish->desired_departure_point }}</td>
+                </tr>
                         
-                    <tr>
-                        <td>乗車希望人数</td>
-                        <td>到着希望地</td>
-                    </tr>
-                    <tr>
-                        <td class='desired_passengers'>{{ $wish->desired_number_of_passengers }}人</td>
-                        <td class='arrive'>{{ $wish->desired_arrive_point }}</td>
-                    </tr>
-                </table>
-            </div>
+                <tr>
+                    <td>乗車希望人数</td>
+                    <td>到着希望地</td>
+                </tr>
+                <tr>
+                    <td class='desired_passengers'>{{ $wish->desired_number_of_passengers }}人</td>
+                    <td class='arrive'>{{ $wish->desired_arrive_point }}</td>
+                </tr>
+            </table>
              
-            <div class='posts'>
-                <table class='post'>
-                    <tr>
-                         <th class='title'>{{ $post->title }}</th>
-                    </tr>
-                    <tr>
-                        <td>出発日時</td>
-                        <td>出発地</td>
-                    </tr>
-                    <tr>
-                        <td class='date_and_time'>{{ $post->departure_date_and_time }}</td>
-                        <td class='departure'>{{ $post->departure_point }}</td>
-                    </tr>
+            <table class='post'>
+                <tr>
+                     <th class='title'>{{ $post->title }}</th>
+                </tr>
+                <tr>
+                    <td>出発日時</td>
+                    <td>出発地</td>
+                </tr>
+                <tr>
+                    <td class='date_and_time'>{{ $post->departure_date_and_time->format('Y-m-d H:i') }}</td>
+                    <td class='departure'>{{ $post->departure_point }}</td>
+                </tr>
                         
-                    <tr>
-                        <td>乗車人数</td>
-                        <td>到着地</td>
-                    </tr>
-                    <tr>
-                        <td class='passengers'>{{ $post->number_of_passengers }}人</td>
-                        <td class='arrive'>{{ $post->arrive_point }}</td>
-                    </tr>
+                <tr>
+                    <td>乗車人数</td>
+                    <td>到着地</td>
+                </tr>
+                <tr>
+                    <td class='passengers'>{{ $post->number_of_passengers }}人</td>
+                    <td class='arrive'>{{ $post->arrive_point }}</td>
+                </tr>
                         
-                    <tr>
-                        <td>乗車可能人数</td>
-                    </tr>
-                    <tr>
-                        <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
-                    </tr>
-                </table>
-            </div>
-         </body>
+                <tr>
+                    <td>乗車可能人数</td>
+                </tr>
+                <tr>
+                    <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
+                </tr>
+            </table>
+        </body>
     </x-app-layout>
 </html>

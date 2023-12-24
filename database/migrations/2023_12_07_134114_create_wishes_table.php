@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('wishes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('root_id')->constrained('posts');
-            $table->foreignId('root_user_id')->constrained('users');
+            $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('post_user_id')->constrained('users');
             $table->dateTime('desired_departure_date_and_time');
             $table->integer('desired_number_of_passengers');
             $table->string('desired_departure_point',30);
