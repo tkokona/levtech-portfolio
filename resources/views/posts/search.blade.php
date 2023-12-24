@@ -35,7 +35,7 @@
                                 <td>出発地</td>
                             </tr>
                             <tr>
-                                <td class='date_and_time'>{{ $post->departure_date_and_time }}</td>
+                                <td class='date_and_time'>{{ $post->departure_date_and_time->format('Y-m-d H:i') }}</td>
                                 <td class='departure'>{{ $post->departure_point }}</td>
                             </tr>
                             
@@ -55,7 +55,7 @@
                                 <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
                             </tr>
                         </table>
-                        <div class='request'><a href="/wishes/request/{{ $post->id }}">申請</a></div>
+                        <div class='request'><a href="/posts/{{ $post->id }}/wishes/request">申請</a></div>
                     @endforeach
                 @endempty
             </div>

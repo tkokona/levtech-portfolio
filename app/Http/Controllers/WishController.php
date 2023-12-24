@@ -11,7 +11,7 @@ class WishController extends Controller
 {
     public function request(Post $post) 
     {
-       
+      
         return view('wishes/request')->with(['post' => $post]);
     }
     
@@ -28,5 +28,22 @@ class WishController extends Controller
     public function show(Post $post, User $user, Wish $wish)
     {
         return view('wishes/show')->with(['post' => $post, 'wish' => $wish]);
+    }
+    
+    public function index()
+    {
+        $wishes=Wish::where('user_id',\Auth::user()->id)->get();
+        $posts=Post::all();
+        return view('wishes/index',['posts'=>$posts, 'wishes'=>$wishes]);
+    }
+    
+     public function check(Post $post, User $user, Wish $wish)
+   {
+       return view('wishes/check')->with(['post' => $post, 'wish' => $wish]);
+   }
+   
+    public function delete(Wish $wish){
+        $wish->delete();
+        return redirect('/wishes');
     }
 }

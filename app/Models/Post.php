@@ -29,6 +29,11 @@ class Post extends Model
         'arrive_point',
         'user_id',
     ];
+    
+    protected $dates = [
+        'departure_date_and_time',
+    ];
+    
     use HasFactory;
     public function getByLimit(int $limit_count = 10)
     {
