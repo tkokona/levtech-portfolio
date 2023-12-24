@@ -30,8 +30,8 @@
                     <input type="text" name="wish[desired_arrive_point]" placeholder="例）東京スカイツリー"/>
                 </div>
                 <input type="submit" value="希望登録"/>
-                <input type="hidden" name="wish[root_id]" value="{{ $post->id }}">
-                <input type="hidden" name="wish[root_user_id]" value="{{ $post->user_id }}">
+                <input type="hidden" name="wish[post_id]" value="{{ $post->id }}">
+                <input type="hidden" name="wish[post_user_id]" value="{{ $post->user_id }}">
             </form>
          </body>
     </x-app-layout>

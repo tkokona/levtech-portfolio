@@ -11,14 +11,19 @@ class PostController extends Controller
     public function index()
     {
         $posts=Post::where('user_id',\Auth::user()->id)->get();
-        //Viewを返却するときは、return文の指定をview('Bladeファイル名の「.blade.php」より前の部分')と記載する。
-        return view('posts/index',['posts'=>$posts,]);
-        
+        $wishes=Wish::all();
+       
+        return view('posts/index',['posts'=>$posts, 'wishes'=>$wishes]);
     }
+    
+  
     
     public function rider()
     {
         $posts=Post::all();
+        // $wish=Wish::where('user_id',\Auth::user()->id)->get();
+        // $wish_post = Post::where('id', $wish->post_id)->first();
+        // $posts=Post::all();
         return view('/posts/rider')->with(['posts' => $posts]);
     }
     

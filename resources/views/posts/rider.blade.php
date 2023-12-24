@@ -19,7 +19,7 @@
                 </form>
             </div>
             
-            
+            <a href='/wishes'>申請一覧</a>
             <div class='posts'>
                 @empty($posts)
                     <p>{{ $message }}</p>
@@ -35,7 +35,7 @@
                                 <td>出発地</td>
                             </tr>
                             <tr>
-                                <td class='date_and_time'>{{ $post->departure_date_and_time }}</td>
+                                <td class='date_and_time'>{{ $post->departure_date_and_time->format('Y-m-d H:i') }}</td>
                                 <td class='departure'>{{ $post->departure_point }}</td>
                             </tr>
                             
