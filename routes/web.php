@@ -31,12 +31,12 @@ Route::delete('/posts/{post}', [PostController::class, 'delete']);
 Route::get('/posts/rider',[PostController::class, 'rider'])->name('rider');
 Route::get('/posts/search',[PostController::class, 'search']);
 
-
-
+Route::get('/wishes', [WishController::class, 'index']);
 Route::get('/posts/{post}/wishes/request', [WishController::class, 'request']);
 Route::get('/wishes/show/{post}/{wish}', [WishController::class, 'show']);
+Route::get('/posts/check/{post}/{wish}', [WishController::class, 'check']);
 Route::post('/wishes/{post}', [WishController::class, 'store']);
-
+Route::delete('/wishes/{wish}', [WishController::class, 'delete']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

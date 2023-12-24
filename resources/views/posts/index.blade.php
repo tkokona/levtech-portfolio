@@ -23,7 +23,7 @@
                             <td>出発地</td>
                         </tr>
                         <tr>
-                            <td class='date_and_time'>{{ $post->departure_date_and_time }}</td>
+                            <td class='date_and_time'>{{ $post->departure_date_and_time->format('Y-m-d H:i') }}</td>
                             <td class='departure'>{{ $post->departure_point }}</td>
                         </tr>
                         
@@ -48,6 +48,15 @@
                         @method('DELETE')
                         <button type="button" onclick="deletePost({{ $post->id }})">削除</button>
                     </form>
+                    <div>
+                        @foreach ($wishes as $wish)
+                            @if($wish->post_id===$post->id)
+                                <a href='/posts/check/{{ $post->id }}/{{ $wish->id }}'>！申請</a>
+                                </br>
+                            @endif
+                        @endforeach
+                    </div>
+                    
                 @endforeach
             </div>
             
