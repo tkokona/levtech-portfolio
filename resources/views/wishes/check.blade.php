@@ -66,6 +66,18 @@
                         <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
                     </tr>
                 </table>
+                
+                <form action="/posts/check/{{ $post->id }}/{{ $wish->id }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="submit" value="承諾">
+                </form>
+                
+                <form action="/posts/check/reject/{{ $post->id }}/{{ $wish->id }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="submit" value="拒否">
+                </form>
             </div>
          </body>
     </x-app-layout>
