@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Management;
 
 class Wish extends Model
 {
+    protected $table = 'wishes';
     use SoftDeletes;
     
     public function user(){
@@ -18,6 +20,10 @@ class Wish extends Model
         return $this->belongsTo(Post::class);
     }
     
+    public function managements(){
+        return $this->hasMany(Management::class);
+    }
+    
      protected $fillable = [
         'user_id',
         'post_id',
@@ -26,6 +32,7 @@ class Wish extends Model
         'desired_number_of_passengers',
         'desired_departure_point',
         'desired_arrive_point',
+        'status'
     ];
     
     protected $dates = [

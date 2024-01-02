@@ -21,7 +21,7 @@
                 </div>
                 <div class="date_and_time">
                     <h2>出発日時</h2>
-                    <input type="text" name="post[departure_date_and_time]" placeholder="例）YY-MM-DD HH:MM:SS"/>
+                    <input type="text" name="post[departure_date_and_time]" placeholder="例）YY-MM-DD HH:MM"/>
                 </div>
                 <div class="passengers">
                     <h2>乗車人数</h2>

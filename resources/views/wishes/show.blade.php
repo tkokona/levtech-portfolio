@@ -12,6 +12,11 @@
         </x-slot>
         <body>
             <table class='wish'>
+                <form action="/wishes/{{ $wish->id }}" id="form_{{ $wish->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deleteWish({{ $wish->id }})">削除</button>
+                    </form>
                 <tr>
                     <td>出発希望日時</td>
                     <td>出発希望地</td>
@@ -30,7 +35,15 @@
                     <td class='arrive'>{{ $wish->desired_arrive_point }}</td>
                 </tr>
             </table>
-             
+            
+            @if($wish->status===1)
+                <h1>マッチング</h1>
+            @elseif($wish->status===2)
+                <h1>マッチング失敗</h1>
+            @else
+                <h1>申請中</h1>
+            @endif
+            
             <table class='post'>
                 <tr>
                      <th class='title'>{{ $post->title }}</th>
@@ -60,6 +73,16 @@
                     <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
                 </tr>
             </table>
+            
+            <script>
+                function deleteWish(id) {
+                    'use strict'
+                    
+                    if (confirm('削除しますか？')) {
+                        document.getElementById(`form_${id}`).submit();
+                    }
+                }
+            </script>
         </body>
     </x-app-layout>
 </html>
