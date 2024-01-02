@@ -32,6 +32,7 @@
                 <input type="submit" value="希望登録"/>
                 <input type="hidden" name="wish[post_id]" value="{{ $post->id }}">
                 <input type="hidden" name="wish[post_user_id]" value="{{ $post->user_id }}">
+                
             </form>
          </body>
     </x-app-layout>

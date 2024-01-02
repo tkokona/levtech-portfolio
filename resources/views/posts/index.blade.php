@@ -50,9 +50,11 @@
                     </form>
                     <div>
                         @foreach ($wishes as $wish)
-                            @if($wish->post_id===$post->id)
+                            @if($wish->post_id===$post->id && $wish->status===0)
                                 <a href='/posts/check/{{ $post->id }}/{{ $wish->id }}'>！申請</a>
                                 </br>
+                            @elseif($wish->post_id===$post->id && $wish->status===1)
+                                <a href='/wishes/show/{{ $post->id }}/{{ $wish->id }}'>詳細</a>
                             @endif
                         @endforeach
                     </div>
