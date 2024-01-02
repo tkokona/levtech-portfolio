@@ -33,11 +33,7 @@
                         </tr>
                     </table>
                     
-                    <form action="/wishes/{{ $wish->id }}" id="form_{{ $wish->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" onclick="deleteWish({{ $wish->id }})">削除</button>
-                    </form>
+                    
                     
                     @foreach($posts as $post)
                         @if($post->id===$wish->post_id)
@@ -70,22 +66,14 @@
                                     <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
                                 </tr>
                             </table>
-                            <a href='/wishes/show/{{ $post->id }}/{{ $wish->id }}'>詳細</a>
+                            <a href='/wishes/show/{{ $post->id }}/{{ $wish->id }}'>[詳細]</a>
                         @endif
                     @endforeach
                     
                 @endforeach
             </div>
             
-            <script>
-                function deleteWish(id) {
-                    'use strict'
-                    
-                    if (confirm('削除しますか？')) {
-                        document.getElementById(`form_${id}`).submit();
-                    }
-                }
-            </script>
+            
          </body>
     </x-app-layout>
 </html>
