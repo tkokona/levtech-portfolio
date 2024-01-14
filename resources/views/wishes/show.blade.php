@@ -12,79 +12,67 @@
                 {{ __('相乗りマッチング') }}
             </h2>
         </x-slot>
-        <body>
-            <table class='wish'>
-                <form action="/wishes/{{ $wish->id }}" id="form_{{ $wish->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" onclick="deleteWish({{ $wish->id }})">削除</button>
-                    </form>
-                <tr>
-                    <td>出発希望日時</td>
-                    <td>出発希望地</td>
-                </tr>
-                <tr>
-                    <td class='desired_date_and_time'>{{ $wish->desired_departure_date_and_time->format('Y-m-d H:i') }}</td>
-                    <td class='desires_departure'>{{ $wish->desired_departure_point }}</td>
-                </tr>
-                        
-                <tr>
-                    <td>乗車希望人数</td>
-                    <td>到着希望地</td>
-                </tr>
-                <tr>
-                    <td class='desired_passengers'>{{ $wish->desired_number_of_passengers }}人</td>
-                    <td class='arrive'>{{ $wish->desired_arrive_point }}</td>
-                </tr>
-            </table>
-            
-            @if($wish->status===1)
-                <h1>マッチング</h1>
-            @elseif($wish->status===2)
-                <h1>マッチング失敗</h1>
-            @else
-                <h1>申請中</h1>
-            @endif
-            
-            <table class='post'>
-                <tr>
-                     <th class='title'>{{ $post->title }}</th>
-                </tr>
-                <tr>
-                    <td>出発日時</td>
-                    <td>出発地</td>
-                </tr>
-                <tr>
-                    <td class='date_and_time'>{{ $post->departure_date_and_time->format('Y-m-d H:i') }}</td>
-                    <td class='departure'>{{ $post->departure_point }}</td>
-                </tr>
-                        
-                <tr>
-                    <td>乗車人数</td>
-                    <td>到着地</td>
-                </tr>
-                <tr>
-                    <td class='passengers'>{{ $post->number_of_passengers }}人</td>
-                    <td class='arrive'>{{ $post->arrive_point }}</td>
-                </tr>
-                        
-                <tr>
-                    <td>乗車可能人数</td>
-                </tr>
-                <tr>
-                    <td class='rideable'>{{ $post->rideable_number_of_people }}人</td>
-                </tr>
-            </table>
-            
-            <script>
-                function deleteWish(id) {
-                    'use strict'
-                    
-                    if (confirm('削除しますか？')) {
-                        document.getElementById(`form_${id}`).submit();
-                    }
-                }
-            </script>
-        </body>
+        <div class="py-12">
+            <div class="mx-auto sm:px-6 lg:px-8"  style="padding: 0px 100px;">
+                @if($wish->status===1)
+                    <h1 style="background-color: #87cefa; color: white; font-size: larger; font-weight: bold; margin: 8px; padding: 8px 5px">マッチング</h1>
+                @elseif($wish->status===2)
+                    <h1 style="background-color: #ff7f50; color: white; font-size: larger; font-weight: bold; margin: 8px; padding: 8px 5px">マッチング失敗</h1>
+                @else
+                    <h1 style="background-color: #dcdcdc; font-size: larger; font-weight: bold; margin: 8px; padding: 8px 5px">申請中</h1>
+                @endif
+                <div style="border: solid gray 1px; border-radius: 20px; background-color: white; padding: 20px; margin-top: 30px;">
+                    <table class='wish' style="margin: 0 auto; border-collapse: separate; border-spacing: 30px 10px;">
+                        <tr style="font-size: larger;">
+                            <td>出発希望日時</td>
+                            <td>出発希望地</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td class='desired_date_and_time' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $wish->desired_departure_date_and_time->format('Y-m-d H:i') }}</td>
+                            <td class='desires_departure' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $wish->desired_departure_point }}</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td>乗車希望人数</td>
+                            <td>到着希望地</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td class='desired_passengers' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $wish->desired_number_of_passengers }}人</td>
+                            <td class='arrive' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $wish->desired_arrive_point }}</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h1 style="font-size: 60px; text-align: center;">▽</h1>
+                <div style="border: solid gray 1px; border-radius: 20px; background-color: white; padding: 20px;">
+                    <table class='post' style="margin: 0 auto; border-collapse: separate; border-spacing: 30px 10px;">
+                        <tr style="font-size: larger;">
+                             <th class='title'>{{ $post->title }}</th>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td>出発日時</td>
+                            <td>出発地</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td class='date_and_time' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $post->departure_date_and_time->format('Y-m-d H:i') }}</td>
+                            <td class='departure' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $post->departure_point }}</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td>乗車人数</td>
+                            <td>到着地</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td class='passengers' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $post->number_of_passengers }}人</td>
+                            <td class='arrive' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $post->arrive_point }}</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td>乗車可能人数</td>
+                        </tr>
+                        <tr style="font-size: larger;">
+                            <td class='rideable' style="border: solid gray 1px; text-align: center; padding: 0 8px;">{{ $post->rideable_number_of_people }}人</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </x-app-layout>
 </html>
