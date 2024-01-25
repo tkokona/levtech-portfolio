@@ -28,8 +28,6 @@ https://carpooling-matching-c476de6dba22.herokuapp.com/ </br>
 - AWS
 - Google Maps API
 
-## ER図
-
 ## 機能一覧
 - ユーザー登録、ログイン(Breeze)
 - 投稿機能
